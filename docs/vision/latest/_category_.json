@@ -1,0 +1,10 @@
+{
+  "label": "Akabot Vision",
+  "position": 15,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Extract and understand information from documents, images, and unstructured content."
+  }
+}

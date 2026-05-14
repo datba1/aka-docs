@@ -1,0 +1,10 @@
+{
+  "label": "Integration Service",
+  "position": 18,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Connect Akabot with enterprise applications, APIs, and third-party services."
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "label": "Akabot Hub",
+  "position": 17,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Discover, share, and reuse automation assets across your organization."
+  }
+}

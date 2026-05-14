@@ -1,0 +1,10 @@
+{
+  "label": "Akabot Insight",
+  "position": 16,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Visualize automation performance and business outcomes with real-time analytics and dashboards."
+  }
+}

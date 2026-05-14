@@ -1,0 +1,11 @@
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+.claude/
+
+# Node (scripts dev-deps — installed in CI, not committed)
+node_modules/
+package-lock.json

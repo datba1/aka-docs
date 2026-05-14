@@ -1,0 +1,10 @@
+{
+  "label": "Data Service",
+  "position": 14,
+  "collapsible": true,
+  "collapsed": false,
+  "link": {
+    "type": "generated-index",
+    "description": "Store, query, and manage structured data used across your automation workflows."
+  }
+}
