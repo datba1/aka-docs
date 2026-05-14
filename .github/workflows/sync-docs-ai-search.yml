@@ -23,10 +23,14 @@ jobs:
   sync:
     runs-on: ubuntu-latest
     env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
       DOCS_PREFIX: docs/
       SYNC_INTERVAL_DAYS: "14"
       R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
       R2_STATE_KEY: _meta/ai-search-index-state.json
+      AWS_ACCESS_KEY_ID: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+      AWS_DEFAULT_REGION: auto
       CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
       CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
       AI_SEARCH_INSTANCE_ID: ${{ secrets.AI_SEARCH_INSTANCE_ID }}
@@ -38,13 +42,6 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-
-      - name: Configure R2 credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          aws-access-key-id: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
-          aws-secret-access-key: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
-          aws-region: auto
 
       - name: Sync changed docs
         run: node scripts/sync-docs-ai-search.mjs
