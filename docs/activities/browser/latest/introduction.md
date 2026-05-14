@@ -6,6 +6,7 @@ sidebar_position: 1
 description: "Introduction to Browser activity package"
 displayed_sidebar: activitiesSidebar
 ---
+
 # Introduction
 
 The **Browser activities** package contains all the **basic activities** used for creating **Web** automation projects.
@@ -14,9 +15,9 @@ If you use this package to perform Web automation and your browser is updated au
 
 These activities enable the robots to:
 
-* **Simulate** human interaction, such as performing mouse and keyboard commands or typing and extracting text, for basic web automation.
-* Create **triggers** based on application behavior, thus enabling the Robot to execute certain actions when specific events occur on a machine.
-* Perform **web** manipulation.
+- **Simulate** human interaction, such as performing mouse and keyboard commands or typing and extracting text, for basic web automation like chrome.
+- Create **triggers** based on application behavior, thus enabling the Robot to execute certain actions when specific events occur on a machine.
+- Perform **web** manipulation.
 
 **Pick Target Element**
 
