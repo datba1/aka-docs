@@ -1,0 +1,50 @@
+name: Sync docs to R2 and AI Search
+
+on:
+  schedule:
+    # Run daily; the script enforces the 14-day gate from R2 state.
+    - cron: "0 2 * * *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: "Bypass the 14-day gate and sync changed docs now"
+        type: boolean
+        required: false
+        default: false
+
+permissions:
+  contents: read
+
+concurrency:
+  group: docs-ai-search-sync
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    env:
+      DOCS_PREFIX: docs/
+      SYNC_INTERVAL_DAYS: "14"
+      R2_BUCKET: ${{ secrets.CLOUDFLARE_R2_BUCKET }}
+      R2_STATE_KEY: _meta/ai-search-index-state.json
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      AI_SEARCH_INSTANCE_ID: ${{ secrets.AI_SEARCH_INSTANCE_ID }}
+      AI_SEARCH_NAMESPACE: ${{ secrets.AI_SEARCH_NAMESPACE }}
+      FORCE_REINDEX: ${{ github.event.inputs.force || 'false' }}
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Configure R2 credentials
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          aws-access-key-id: ${{ secrets.CLOUDFLARE_R2_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.CLOUDFLARE_R2_SECRET_ACCESS_KEY }}
+          aws-region: auto
+
+      - name: Sync changed docs
+        run: node scripts/sync-docs-ai-search.mjs
