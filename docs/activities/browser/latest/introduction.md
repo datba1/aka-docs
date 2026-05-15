@@ -3,7 +3,7 @@ id: introduction
 title: "Introduction"
 sidebar_label: "Introduction"
 sidebar_position: 1
-description: "Introduction to Browser activity package"
+description: "Introduction to Browser activity package for studio"
 displayed_sidebar: activitiesSidebar
 ---
 
